@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Beer Clubs</h1>
+
+<ul>
+  <% @beer_clubs.each do |beer_club| %>
+      <li><%= link_to beer_club.name, beer_club %>
+  <%end%>
+</ul>
+
+<%= link_to 'New Beer club', new_beer_club_path %>

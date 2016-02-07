@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :memberships
+  resources :beer_clubs
   resources :users
   root 'breweries#index'  # get '/', to: 'breweries#index'
   #get 'ratings', to: 'ratings#index'  -> kontrollerin nimi ilman sanaa Controller

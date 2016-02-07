@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   include RatingAverage
   has_many :ratings, dependent: :destroy
   has_many :beers, -> { uniq }, through: :rating
+  has_many :memberships, dependent: :destroy
+  has_many :beer_clubs, -> { uniq }, through: :membership
   has_secure_password
 
   validates :username, uniqueness: true,
