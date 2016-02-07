@@ -3,11 +3,10 @@ class Beer < ActiveRecord::Base
 
   belongs_to :brewery
   has_many :ratings, dependent: :destroy
+  has_many :users, -> { uniq }, through: :ratings
 
-  # tehty moduuli tiedostoon rating_average.rb
-  #def average_rating
-  #  self.ratings.average(:score)
-  #end
+  validates :name, uniqueness: true,
+            presence: true
 
   def to_s
     "#{self.name}, #{self.brewery.name}"

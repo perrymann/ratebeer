@@ -1,0 +1,10 @@
+<% if current_user == @user %>
+  <h1>Change password of <%= current_user.to_s %></h1>
+  <p id="notice"><%= notice %></p>
+<%= render 'form' %>
+<% end %>
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>
+
+
+
