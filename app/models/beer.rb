@@ -5,8 +5,8 @@ class Beer < ActiveRecord::Base
   has_many :ratings, dependent: :destroy
   has_many :users, -> { uniq }, through: :ratings
 
-  validates :name, uniqueness: true,
-            presence: true
+  validates :name, presence: true
+  validates :style, presence: true
 
   def to_s
     "#{self.name}, #{self.brewery.name}"

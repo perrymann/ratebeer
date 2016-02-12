@@ -1,5 +1,13 @@
 <h2>List of ratings</h2>
 
+<p>
+  <% if @ratings.all.empty? %>
+      No ratings
+  <% else %>
+      <%=@ratings.all.count%> <%="rating".pluralize(@ratings.all.count)%> in total
+  <% end %>
+</p>
+
 <ul>
   <% @ratings.each do |rating| %>
     <li><%= rating %>, <%= link_to rating.user.to_s, rating.user %></li>
