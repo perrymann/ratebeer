@@ -69,7 +69,4 @@ require 'rails_helper'
       end
     end
   end
-
-
-
 end

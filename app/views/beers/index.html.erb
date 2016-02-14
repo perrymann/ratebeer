@@ -27,5 +27,4 @@
 
 <br>
 
-<div><%= link_to 'New Beer', new_beer_path %></div>
-
+<%= link_to('New Beer', new_beer_path) if current_user %>
