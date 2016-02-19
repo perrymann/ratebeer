@@ -1,6 +1,8 @@
 language: ruby
 rvm:
 - 2.3.0
+env:
+- APIKEY: "29d6573c7b24b8cfb13ea22cd9655d42"
 script:
 - bundle exec rake db:migrate --trace
 - RAILS_ENV=test bundle exec rake db:migrate --trace
@@ -8,7 +10,7 @@ script:
 - bundle exec rspec -fd spec/
 deploy:
   provider: heroku
-  APIKEY: 29d6573c7b24b8cfb13ea22cd9655d42
+  api_key:
     secure: N+5zA1Yof2lrzHfZcg3X5gK2z41PnV1Bs4J6FymQ8hRDFBvMRLwEGw6EQeTo7NBxcQUn8wBKWxwsxTu12UOlyTsaoJtjWc6zL9HxY5heOgtWhQj8wVGwHOd8kWo8cik9fpP24fIZutw4Qql7vsT9v6MctimHq7BrSJn8xrKRbAVuabAO/4L2yxY1rX+vGwyVfuvyjDZN5ppEmkLosUt8IEouYaG/nbOhAq9R9OwRhdEonYovY6mfFHlvC+Ur8DuSqSFmbAWyf7FQ2cho2WUhWxPbFb/Ai6/wXgchwqBaOCZZ6U9tWt4t4Wt4VQpIfkoZe1jUOT/h4Ogae7WRQGJxtbokTX4S++fvJefJ3uir1pit2MsuaalxKziY+L6/WGI8q2YfW0g9xvJolE6EI59urVLAVkk7R7dsNNmMH2OxflFVuG7lmIXTuGtNjwICsGqndf2AaXl8rStzlp+hZa4annDp6PSicGC+i9nijLdpmw6zIQ4PuGmqmUpnJ+dv03rpcnw8WhG3ZSRKoBBGk5BvzIPfQ+rzk+esvKPnZOK0tOm69q1Sy5k/FezSXfltsVti12qOfd5KUhxf9BmItnkVWZU4KPDeMJIir07qVk3TC+eIfKInI6ealaxjlg0J2kufAjYshgsYlXq3RQzTQom571RKvsRL18XCybWlG50Deh8=
   app: still-spire-2116
   on:
