@@ -1,19 +1,33 @@
 require 'rails_helper'
 
-describe "Beers page" do
+include Helpers
 
-  describe "when user is signed up" do
+describe "Beer" do
+  before :each do
+    FactoryGirl.create :brewery, name:"testbrew"
+  end
+
+  describe "if a user logged in" do
     before :each do
-      FactoryGirl.create(:user)
+      FactoryGirl.create :user
+      sign_in(username:"Pekka", password:"Foobar1")
     end
 
-    it "shows the error message if beer does not have a name" do
-      visit signin_path
-      fill_in('username', with:'Pekka')
-      fill_in('password', with:'Foobar1')
-      click_button('Log in')
+    it "a new beer is created if a valid name specified" do
+      style = FactoryGirl.create :style
       visit new_beer_path
-      click_button("Create Beer")
+      fill_in('beer_name', with:'CrapIPA')
+      select(style)
+      expect{
+        click_button "Create Beer"
+      }.to change{Beer.count}.from(0).to(1)
+    end
+
+    it "is not created if name not valid" do
+      visit new_beer_path
+      click_button "Create Beer"
+      expect(Beer.count).to be(0)
+      expect(page).to have_content 'prohibited this beer from being saved'
       expect(page).to have_content "Name can't be blank"
     end
   end

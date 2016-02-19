@@ -13,6 +13,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'webmock/rspec'
+require 'helpers'
 
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

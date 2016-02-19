@@ -50,4 +50,27 @@ describe "User" do
       expect(page).to have_content "This user has not added any ratings!"
     end
   end
+
+  describe "have rated some beers" do
+    let(:user) {FactoryGirl.create :user}
+    before :each do
+      @brewery = FactoryGirl.create :brewery, name:"Sierra Nevada"
+      other_brewery = FactoryGirl.create :brewery
+      style1 = FactoryGirl.create :style
+      style2 = FactoryGirl.create :style2
+      create_beers_with_ratings(user, style1, other_brewery, 10, 20, 15)
+      create_beers_with_ratings(user, style2, @brewery, 25, 20)
+      create_beers_with_ratings(user, style2, other_brewery, 20, 23, 22)
+    end
+
+    it "the favorite style is shown at user's page" do
+      visit user_path(user)
+      expect(page).to have_content 'Favorite style IPA'
+    end
+
+    it "the favorite brewery is shown at user's page" do
+      visit user_path(user)
+      expect(page).to have_content 'Favorite brewery Sierra Nevada'
+    end
+  end
 end
