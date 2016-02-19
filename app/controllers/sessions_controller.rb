@@ -1,8 +1,7 @@
 
 class SessionsController < ApplicationController
   def new
-    # renderöi kirjautumissivun
-  end
+   end
 
   def create
     user = User.find_by username: params[:username]

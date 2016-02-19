@@ -13,7 +13,11 @@
   </p>
 
   <h3>Ratings</h3>
+  <% if @user.ratings.any? %>
+      <p>Favorite style <%= @user.favorite_style %></p>
 
+      <p>Favorite brewery <%= @user.favorite_brewery.name %></p>
+  <% end %>
   <ul>
     <% @user.ratings.each do |rating| %>
         <li><%= rating %>

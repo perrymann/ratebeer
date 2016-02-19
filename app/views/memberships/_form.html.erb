@@ -11,6 +11,6 @@
     </div>
   <% end %>
 
-    <%= f.select :beer_club_id, options_from_collection_for_select(@clubs, :id, :name)  %>
+    <%= f.select :beer_club_id, options_from_collection_for_select(@clubs, :id, :name, selected: @membership.beer_club_id)  %>
     <%= f.submit %>
 <% end %>
