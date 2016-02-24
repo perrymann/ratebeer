@@ -1,0 +1,18 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Average Score</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% entity.each do |e| %>
+      <tr>
+        <td><%= link_to e.name, e %></td>
+        <td><%= round(e.average_rating) %></td>
+        <td></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

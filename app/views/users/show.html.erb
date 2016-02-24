@@ -4,13 +4,26 @@
     <h2><%= @user.username %></h2>
   </p>
 
+  <% if @user.banned? %>
+    <span class="label label-danger">Banned</span>
+  <% end %>
+
   <p>
     <% if @user.ratings.empty? %>
+
         This user has not added any ratings!
     <% else %>
         has <%=@user.ratings.count%> <%="rating".pluralize(@user.ratings.count)%>, with an average of <%= @user.average_rating %>
     <% end %>
   </p>
+
+<% if current_user and current_user.admin? %>
+    <% unless @user.banned? %>
+      <%= link_to "freeze account", toggle_activity_user_path(@user), method: :post, class: 'btn btn-danger btn-xs' %>
+    <% else %>
+      <%= link_to "activate account", toggle_activity_user_path(@user), method: :post, class: 'btn btn-success btn-xs' %>
+    <% end %>
+<% end %>
 
   <h3>Ratings</h3>
   <% if @user.ratings.any? %>

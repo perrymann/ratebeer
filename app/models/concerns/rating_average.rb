@@ -6,4 +6,5 @@ module RatingAverage
     # ratings.inject(0.0){ |sum, r| sum+r.score } / ratings.count
     ratings.average(:score)
   end
+
 end

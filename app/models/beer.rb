@@ -13,4 +13,8 @@ class Beer < ActiveRecord::Base
     "#{self.name}, #{self.brewery.name}"
   end
 
+  def self.bestBeers(n)
+    Beer.all.sort_by{ |b| -(b.average_rating||0) }.first(n)
+  end
+
 end

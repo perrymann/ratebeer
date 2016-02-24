@@ -35,7 +35,6 @@ describe "Ratings" do
 
     it "those and their count are shown at the ratings page" do
       visit ratings_path
-      expect(page).to have_content "3 ratings in total"
       expect(page).to have_content "iso 3, 10"
       expect(page).to have_content "Karhu, 20"
       expect(page).to have_content "Karhu, 20"

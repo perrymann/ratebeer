@@ -25,6 +25,8 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @user.banned = false
+    @user.admin = false
 
     respond_to do |format|
       if @user.save
@@ -63,6 +65,15 @@ class UsersController < ApplicationController
       format.json { head :no_content }
       end
     end
+  end
+
+  def toggle_activity
+    user = User.find(params[:id])
+    user.update_attribute :banned, (not user.banned)
+
+    new_status = user.banned? ? true : false
+
+    redirect_to :back, notice:"user status changed"
   end
 
   private

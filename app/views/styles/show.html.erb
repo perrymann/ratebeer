@@ -2,7 +2,14 @@
 
 <p><%= @style.description%></p>
 
-<p id="notice"><%= notice %></p>
+<h2>Beers</h2>
 
-<%= link_to 'Edit', edit_style_path(@style) %> |
-<%= link_to 'Back', styles_path %>
+<tbody>
+<% @style.beers.each do |beer| %>
+    <ul>
+      <li><%= link_to beer.name, beer %> by <%= link_to beer.brewery.name, beer.brewery %></li>
+    </ul>
+<% end %>
+</tbody>
+
+<%= edit_and_destroy_buttons(@style) %>

@@ -10,17 +10,20 @@ Rails.application.routes.draw do
   resources :beers
   resources :breweries
   resource :session, only: [:new, :create, :destroy]
-
   resources :styles
 
   get 'signin', to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'
-
   get 'signup', to: 'users#new'
 
   resources :places, only:[:index, :show]
   #get 'places', to: 'places#index'
   post 'places', to:'places#search'
+
+  resources :users do
+    post 'toggle_activity', on: :member
+  end
+end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -76,4 +79,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+

@@ -8,7 +8,7 @@
 <% end %>
 
 <% if @places %>
-    <table>
+    <table class="table table-hover">
        <% @places.each do |place| %>
           <tr>
             <td><%= link_to place.name, place_path(place.id) %></td>

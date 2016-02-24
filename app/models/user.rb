@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include RatingAverage
+
   has_many :ratings, dependent: :destroy
   has_many :beers, -> { uniq }, through: :rating
   has_many :memberships, dependent: :destroy
@@ -13,6 +14,10 @@ class User < ActiveRecord::Base
 
   def to_s
     self.username
+  end
+
+  def allowed
+    not banned
   end
 
   def favorite_beer
@@ -32,6 +37,10 @@ class User < ActiveRecord::Base
 
     rated = ratings.map{ |r| r.beer.brewery }.uniq
     rated.sort_by { |brewery| -rating_of_brewery(brewery) }.first
+  end
+
+  def self.bestUsers(n)
+    User.all.sort_by {|u| -(u.ratings.count||0)}.first(n)
   end
 
   private

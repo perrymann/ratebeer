@@ -27,7 +27,7 @@ describe "User" do
     end
   end
 
-  describe "user who has ratings" do
+  describe "who has ratings" do
       let(:user) {FactoryGirl.create :user}
       before :each do
         beer = FactoryGirl.create :beer

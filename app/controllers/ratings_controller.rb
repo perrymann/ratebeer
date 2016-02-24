@@ -2,13 +2,19 @@
 class RatingsController < ApplicationController
   def index
     @ratings = Rating.all
-    render :index # voidaan jättää pois myös, (renderöi näkymätemplaten /app/views/ratings/index.html) eli samannimisen näkymän
+    @best_beers = Beer.bestBeers(3)
+    @best_breweries = Brewery.bestBreweries(3)
+    @best_styles = Style.bestStyles(3)
+    @best_users = User.bestUsers(3)
+    render :index
   end
 
   def new
     @rating = Rating.new
     @beers = Beer.all
   end
+
+
 
   def create
     @rating = Rating.new params.require(:rating).permit(:score, :beer_id)
