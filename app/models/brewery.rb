@@ -6,6 +6,7 @@ class Brewery < ActiveRecord::Base
 
   scope :active, -> { where active:true }
   scope :retired, -> { where active: [nil, false]}
+  scope :count_beers, -> { self.beers.count}
 
   validates :name, presence: true
   validates :year, numericality: { less_than_or_equal_to: Proc.new { Time.now.year } }
@@ -16,5 +17,9 @@ class Brewery < ActiveRecord::Base
 
   def to_s
     self.name
+  end
+
+  def count_beers
+    self.beers.count
   end
 end

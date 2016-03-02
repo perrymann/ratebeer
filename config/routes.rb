@@ -2,10 +2,7 @@ Rails.application.routes.draw do
   resources :memberships
   resources :beer_clubs
   resources :users
-  root 'breweries#index'  # get '/', to: 'breweries#index'
-  #get 'ratings', to: 'ratings#index'  -> kontrollerin nimi ilman sanaa Controller
-  #get 'ratings/new', to:'ratings#new'
-  #post 'ratings', to: 'ratings#create'
+  root 'breweries#index'
   resources :ratings, only: [:index, :new, :create, :destroy]
   resources :beers
   resources :breweries
@@ -23,6 +20,10 @@ Rails.application.routes.draw do
   resources :users do
     post 'toggle_activity', on: :member
   end
+
+  get 'ngbeerlist', to:'beers#nglist'
+  get 'brewerylist', to: 'breweries#brewerylist'
+
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

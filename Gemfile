@@ -75,3 +75,6 @@ end
 
 gem 'httparty'
 
+gem 'selenium-webdriver'
+gem 'database_cleaner'
+
