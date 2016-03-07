@@ -1,5 +1,7 @@
 <h2>Ratings</h2>
 
+<% cache 'ratingslist', expires_in:10.minutes do %>
+
 <div class="row">
   <div class="col-md-4">
     <h3>Best beers</h3>
@@ -54,3 +56,5 @@
 </ul>
   <% end %>
 </p>
+
+<% end %>

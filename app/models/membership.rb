@@ -10,4 +10,9 @@ class Membership < ActiveRecord::Base
   def member
     User.find_by id: user_id
   end
+
+  def unconfirmed
+    not confirmed
+  end
+
 end

@@ -1,3 +1,5 @@
+<% cache @brewery do %>
+
 <h2><%= @brewery.name %>
   <% if not @brewery.active  %>
     <span class="label label-info">retired</span>
@@ -20,6 +22,8 @@
       Has <%=@brewery.ratings.count%> <%="rating".pluralize(@brewery.ratings.count)%>, average: <%= @brewery.average_rating %>
   <% end %>
 </p>
+
+<% end %>
 
 <%= link_to 'Destroy', @brewery, class:'btn btn-danger btn-xs', method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Edit', edit_brewery_path(@brewery), class:'btn btn-primary btn-xs' %>

@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-03-02T16:24:02+02:00">2016-03-02T16:24:02+02:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-03-02T16:59:48+02:00">2016-03-02T16:59:48+02:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -1556,16 +1556,16 @@
           <code class="ruby">  def index</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="14">
-          
-          
-          <code class="ruby">    #@beers = Beer.includes(:brewery, :style).all</code>
-        </li>
-      
-        <li class="covered" data-hits="4" data-linenumber="15">
+        <li class="covered" data-hits="4" data-linenumber="14">
           <span class="hits">4</span>
           
-          <code class="ruby">    @beers = Beer.all</code>
+          <code class="ruby">    @beers = Beer.includes(:brewery, :style).all</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="15">
+          
+          
+          <code class="ruby">    #@beers = Beer.all</code>
         </li>
       
         <li class="covered" data-hits="4" data-linenumber="16">
@@ -4217,7 +4217,7 @@
         <li class="missed" data-hits="0" data-linenumber="7">
           
           
-          <code class="ruby">    @users = User.all</code>
+          <code class="ruby">    @users = User.includes(:beers, :ratings).all</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="8">

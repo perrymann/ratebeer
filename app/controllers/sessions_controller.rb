@@ -3,6 +3,18 @@ class SessionsController < ApplicationController
   def new
    end
 
+  def create_oauth
+    user = User.find_by username: env["omniauth.auth"].info.nickname
+    if user and not user.banned
+      session[:user_id] = user.id
+      redirect_to user, notice: 'Welcome back!'
+    else
+
+    end
+  end
+
+
+
   def create
     user = User.find_by username: params[:username]
 

@@ -77,4 +77,6 @@ gem 'httparty'
 
 gem 'selenium-webdriver'
 gem 'database_cleaner'
+gem 'rack-mini-profiler'
+gem 'omniauth-github'
 

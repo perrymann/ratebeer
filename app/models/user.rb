@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   include RatingAverage
 
   has_many :ratings, dependent: :destroy
-  has_many :beers, -> { uniq }, through: :rating
+  has_many :beers, -> { uniq }, through: :ratings
   has_many :memberships, dependent: :destroy
   has_many :beer_clubs, through: :membership
   has_secure_password
